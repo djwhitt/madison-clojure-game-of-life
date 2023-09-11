@@ -1,0 +1,13 @@
+{:paths ["src"]
+ :deps {org.clojure/clojure {:mvn/version "1.11.1"}}
+ :aliases
+ {:repl {:extra-paths ["dev"]
+         :extra-deps {cider/cider-nrepl {:mvn/version "0.30.0"}
+                      com.bhauman/rebel-readline {:mvn/version "0.1.4"}
+                      com.github.jpmonettas/flow-storm-dbg {:mvn/version "3.6.9"}
+                      com.hyperfiddle/rcf {:mvn/version "20220926-202227"}
+                      djblue/portal {:mvn/version "0.46.0"}
+                      org.clojure/tools.namespace {:mvn/version "1.4.4"}}}}
+ :mvn/repos
+ {"ossrh-snapshots"
+  {:url "https://s01.oss.sonatype.org/content/repositories/snapshots"}}}
