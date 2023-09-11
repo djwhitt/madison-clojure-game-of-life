@@ -1,12 +1,15 @@
 (ns game-of-life.core)
 
+(def directions [[-1 -1] [-1 0] [-1 1]
+                 [ 0 -1]        [ 0 1]
+                 [ 1 -1] [ 1 0] [ 1 1]])
+
 (defn count-neighbors
   "Count the number of live neighbors for a given cell"
   [board x y]
-  (let [directions [[-1 -1] [-1 0] [-1 1]
-                    [0 -1]          [0 1]
-                    [1 -1] [1 0] [1 1]]
-        neighbors (map #(get-in board [(+ x (first %)) (+ y (second %))]) directions)]
+  (let [neighbors (map (fn [[dx dy]]
+                         (get-in board [(+ x dx) (+ y dy)]))
+                       directions)]
     (count (filter true? neighbors))))
 
 (defn next-state
@@ -26,7 +29,7 @@
   (mapv
    (fn [row x]
      (mapv
-      (fn [cell y]
+      (fn [_ y]
         (next-state board x y))
       row (range (count row))))
    board (range (count board))))
@@ -35,12 +38,10 @@
   "Print the board to stdout"
   [board]
   (doseq [row board]
-    (println
-      (apply str
-        (map
-          (fn [cell]
-            (if cell "#" "."))
-          row))))
+    (->> row
+         (map #(if % "#" "."))
+         (apply str)
+         (println)))
   (println))
 
 (defn init-board
