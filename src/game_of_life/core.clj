@@ -1,4 +1,5 @@
-(ns game-of-life.core)
+(ns game-of-life.core
+  (:require [hyperfiddle.rcf :refer [tests]]))
 
 (def directions [[-1 -1] [-1 0] [-1 1]
                  [ 0 -1]        [ 0 1]

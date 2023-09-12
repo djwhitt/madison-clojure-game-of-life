@@ -1,0 +1,12 @@
+.cache
+.clj-kondo
+.cpcache
+.direnv
+.env
+.lsp
+.nrepl-port
+.rebel_readline_history
+.venv
+
+!/.clj-kondo/config.edn
+!/.lsp/config.edn
